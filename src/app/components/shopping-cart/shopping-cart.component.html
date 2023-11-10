@@ -1,0 +1,19 @@
+<div class="card-container">
+    <ng-template class="product-list">
+       <mat-card class="product-card" *ngFor="let product of cart$ | async">
+          <mat-card-title>{{ product.name }}</mat-card-title>
+          <mat-card-content>
+            Price:${{ product.price | number:'1.2-2' }}
+          </mat-card-content>
+          <mat-card-actions>
+              <button mat-button (click)="removeFromCart(product.id)">Remove</button>
+          </mat-card-actions>
+
+          <div class="cart-summary">
+             <h2>Cart Summary</h2>
+             <p>Total Items: {{(cart$ | async)?.length}}</p>
+           
+          </div>
+       </mat-card>
+    </ng-template>
+</div>
